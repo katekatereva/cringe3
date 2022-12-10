@@ -4,11 +4,11 @@ import condition.*;
 import person.*;
 
 public abstract class Character{
+    final private String name;
+    final private int age;
+    final private String type;
     private Position pos;
     private GeopositionActions geo;
-    final private String name;
-    final private String type;
-    final private int age;
     private EmotionsActions emo;
 
 

@@ -19,25 +19,8 @@ public class Human extends Character implements ChangedEmotions, ChangedGeoposit
         EmotionsActions prevEmo = this.getEmo();
         this.setEmotions(state);
         String personName = this.getName();
-        if (state == EmotionsActions.DELIGHT) {
-            System.out.println(personName +
-                    (prevEmo != EmotionsActions.DELIGHT ? " приходит в восторг" : " остается в восторге"));
-        } else if (state == EmotionsActions.JOY) {
-            System.out.println(personName +
-                    (prevEmo != EmotionsActions.JOY ? " начинает радоваться" : " радуется"));
-        } else if (state == EmotionsActions.DOUBT) {
-            System.out.println(personName +
-                    (prevEmo != EmotionsActions.DOUBT ? " начинает сомневаться" : " сомневается"));
-        }else if (state == EmotionsActions.NODOUBT) {
-            System.out.println(personName +
-                    (prevEmo != EmotionsActions.NODOUBT ? " не сомневается" : " убедился"));
-        } else if (state == EmotionsActions.NEUTRAL) {
-            System.out.println(personName +
-                    (prevEmo != EmotionsActions.NEUTRAL ? " успокаивается" : " остается спокойным"));
-        } else if (state == EmotionsActions.ENVY) {
-            System.out.println(personName +
-                    (prevEmo != EmotionsActions.ENVY ? " начинает завидовать" : " завидует"));
-        }
+        Convert<EmotionsActions> con = x -> x.getString(prevEmo);
+        System.out.println(personName + " " + con.write(state));
     }
 
 
