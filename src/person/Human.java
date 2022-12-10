@@ -29,16 +29,8 @@ public class Human extends Character implements ChangedEmotions, ChangedGeoposit
         Position prevPos = this.getPos();
         this.setPos(pam2);
         String personName = this.getName();
-        if (pam2 == Position.STAND) {
-            System.out.println(personName +
-                    (prevPos != Position.STAND ? " вскакивает на ноги" : " все еще стоит"));
-        } else if (pam2 == Position.LIE) {
-            System.out.println(personName +
-                    (prevPos != Position.LIE ? " ложится" : " жестко тильтует и все еще лежит"));
-        } else if (pam2 == Position.SIT) {
-            System.out.println(personName +
-                    (prevPos != Position.SIT ? " присел" : " сидит"));
-        }
+        Convert<Position> con = x -> x.getString(prevPos);
+        System.out.println(personName + " " + con.write(pam2));
     }
 
 
@@ -47,18 +39,7 @@ public class Human extends Character implements ChangedEmotions, ChangedGeoposit
         GeopositionActions prevGeo = this.getGeo();
         this.setGeo(pam);
         String personName = this.getName();
-        if (pam == GeopositionActions.STREET) {
-            System.out.println(personName +
-                    (prevGeo != GeopositionActions.STREET ? " очутился на улице" : " все еще ходит по улице"));
-        } else if (pam == GeopositionActions.CITY) {
-            System.out.println(personName +
-                    (prevGeo != GeopositionActions.CITY ? " прибыл в город" : " продолжает чиллить в городе"));
-        } else if (pam == GeopositionActions.OUTSIDE) {
-            System.out.println(personName +
-                    (prevGeo != GeopositionActions.OUTSIDE ? " пафосно вышел" : " а че как выйти из выхода?"));
-        } else if (pam == GeopositionActions.INSIDE) {
-            System.out.println(personName +
-                    (prevGeo != GeopositionActions.INSIDE ? " врывается внутрь" : " жестко остается на месте"));
-        }
+        Convert<GeopositionActions> con = x -> x.getString(prevGeo);
+        System.out.println(personName + " " + con.write(pam));
     }
 }
